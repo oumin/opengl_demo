@@ -1,7 +1,8 @@
 package cn.oumin.opengl_demo
 
-import android.support.v7.app.AppCompatActivity
+import android.opengl.GLSurfaceView
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -10,8 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Example of a call to a native method
-        sample_text.text = stringFromJNI()
+        glSurfaceView.setEGLContextClientVersion(2)
+        glSurfaceView.setRenderer(Renderer())
+        glSurfaceView.renderMode=GLSurfaceView.RENDERMODE_CONTINUOUSLY
+
     }
 
     /**
